@@ -1,0 +1,92 @@
+.work-page{
+    width:100%;
+    padding: 8rem 0;
+    margin: 0 auto;
+    &__title{
+        font-size: 3.5rem;
+        letter-spacing: .2rem;
+        text-align: center;
+        animation: showText 1s backwards;
+    }
+    &__sub{
+        font-size: 0.75rem;
+        letter-spacing: .05rem;
+        text-align: center;
+        animation: showText 2s backwards;
+    }
+    &__caption{
+        margin-left: auto;
+        margin-right: auto;
+        width:60%;
+        letter-spacing: .05rem;
+        text-align: justify;
+        line-height:1.5rem;
+        font-weight: 300;
+        font-size: 0.9rem;
+        animation: showText 3s backwards;
+    }
+    &__link a{
+        display: block;
+        width:8rem;
+        line-height:2rem;
+        border:1px solid #333;
+        border-radius: 5rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        animation: showText 4s backwards;
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: .05rem;
+    }
+    &__scroll{
+        position:relative;
+        height:50px;
+        text-align: center;
+        & span{
+            position: absolute;
+            left:50%;
+            transform: translateX(-50%);
+            top: -1rem;
+            color: #333;
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            width: .05rem;
+            height: 2rem;
+            background: #333;
+            animation: scrollAnimation 1.4s ease-in-out infinite;
+            opacity:0;
+        }
+    }
+    &__contents{
+        width:100%;
+        margin: 0 auto;
+        &-item{
+            width:100%;
+            margin: 0 auto;
+            display:block;
+        }
+    }
+}
+
+
+.animationTargetWork{
+    opacity: 0;
+    transition:1s;
+    &.show{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width:599px) {
+    .work-page__caption{
+        width:90%;
+    }
+}

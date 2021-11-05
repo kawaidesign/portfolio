@@ -1,0 +1,498 @@
+@charset "utf-8";
+@import "reset";
+@import "work";
+
+/* 共通CSS */
+
+* {
+  color: #333;
+  font-size: 16px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+img {
+  pointer-events: none;
+}
+
+a {
+  transition: .2s;
+
+  &:hover {
+    opacity: .6;
+    cursor: pointer;
+  }
+}
+
+.mb-s {
+  margin-bottom: 1rem;
+}
+
+.mb-m {
+  margin-bottom: 2rem;
+}
+
+.mb-l {
+  margin-bottom: 4rem;
+}
+
+$gradient: linear-gradient(140deg, rgb(255, 255, 255) 20%, rgb(255, 255, 180), rgb(190, 255, 190), rgb(190, 255, 255) 70%);
+
+/* ローディング画面 */
+
+.loading {
+  background-color: #fff;
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .4s;
+  &__image {
+    width: 7rem;
+    animation: loading .7s ease-in-out infinite;
+  }
+  
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(0.5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* トップページ */
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.header{
+  &__wrapper {
+    width: 100%;
+    height: 6rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 50;
+    transform: translateX(-50%);
+  }
+  &__logo {
+    width: 10rem;
+  }
+}
+
+.main{
+  &__wrapper {
+    background-image: $gradient;
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    margin: 0 auto;
+    height: 37rem;
+    margin: 0 calc(50% - 50vw) 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+  }
+  &__copy-h1 span {
+      font-size: 4rem;
+      letter-spacing: .3rem;
+      animation: showText 2s backwards;
+      display: inline-block;
+  }
+  &__copy-h2 span {
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    animation: showText 2s backwards;
+    display: inline-block;
+  }
+  &__image {
+    height: 25rem;
+  }
+  
+  &__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    height: 50px;
+  
+    span {
+      position: absolute;
+      left: -15px;
+      top: -15px;
+      color: #333;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+  
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: .05rem;
+      height: 2rem;
+      background: #333;
+      animation: scrollAnimation 1.4s ease-in-out infinite;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes showText {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes scrollAnimation {
+  0% {
+    height: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  30% {
+    height: 2rem;
+    opacity: 1;
+  }
+
+  100% {
+    height: 0;
+    top: 50px;
+    opacity: 0;
+  }
+}
+
+.work {
+  text-align: center;
+    &__title {
+      font-size: 1.5rem;
+      letter-spacing: .1rem;
+    }
+    
+    &__contents {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 2rem;
+    }
+    
+    &__contents-item {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: .5rem;
+      border: 0.1rem solid rgb(230, 230, 230);
+    }
+}
+
+.nav {
+  width: 20rem;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  &__wrapper {
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    background-color: #fff;
+    box-shadow: -5px -5px 10px 0px rgba(230, 230, 230, 0.3), 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  &__ul {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+/* プロフィールのモーダルウィンドウ */
+
+.modal-profile{
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    cursor: pointer;
+      &.show{
+        opacity: 1;
+        visibility: visible;
+      }
+  }
+
+  &__window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    background-color: #fff;
+    border-radius: 2rem;
+    padding: 2rem;
+    overflow: scroll;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+      &.show{
+        opacity: 1;
+        visibility: visible;
+      }
+  }
+
+  &__icon {
+    display: block;
+    width: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+  }
+
+  &__sentence {
+    width: 90%;
+    text-align: justify;
+    font-weight: 300;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+  }
+}
+
+/* メールフォームのモーダルウィンドウ */
+
+.modal-mail{
+.modal-mail__mask.show, .modal-mail__window.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+&__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    cursor: pointer;
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    background-color: #fff;
+    border-radius: 2rem;
+    padding: 2rem;
+    overflow: scroll;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__sentence {
+    width: 90%;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    line-height: 1.5rem;
+  }
+}
+
+.footer {
+  background-image: $gradient;
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  margin: 0 calc(50% - 50vw) 30px;
+  height: 10rem;
+  padding: 3.5rem;
+  &__copy {
+    font-size: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.animationTarget {
+  &:nth-child(3n+1) {
+    opacity: 0;
+    transform: translateY(30%);
+    transition: 1s;
+  }
+
+  &:nth-child(3n+2) {
+    opacity: 0;
+    transform: translateY(30%);
+    transition: 2s;
+  }
+
+  &:nth-child(3n+3) {
+    opacity: 0;
+    transform: translateY(30%);
+    transition: 3s;
+  }
+
+  &.show {
+    &:nth-child(3n+1), &:nth-child(3n+2), &:nth-child(3n+3) {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .mb-s {
+    margin-bottom: .7rem;
+  }
+
+  .mb-m {
+    margin-bottom: 1.5rem;
+  }
+
+  .mb-l {
+    margin-bottom: 2.5rem;
+  }
+
+  .container {
+    max-width: 375px;
+  }
+
+  .main__wrapper {
+    height: 80vh;
+    margin: 0 calc(50% - 50vw) 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+  }
+
+  .main__copy-h1 span {
+    font-size: 2.8rem;
+    letter-spacing: .22rem;
+  }
+
+  .main__copy-h2 span {
+    font-size: .8rem;
+    letter-spacing: .1rem;
+  }
+
+  .work__title {
+    font-size: 1.2rem;
+  }
+
+  .main__image {
+    height: 18rem;
+  }
+
+  .work__contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .modal-profile__window, .modal-mail__window {
+    width: 90vw;
+    padding: 1rem;
+  }
+
+  .animationTarget {
+    &:nth-child(3n+2), &:nth-child(3n+3) {
+      transition: 1s;
+    }
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .container {
+    max-width: 320px;
+  }
+
+  .main__copy-h1 span {
+    font-size: 2.2rem;
+  }
+
+  .main__copy-h2 span {
+    font-size: .6rem;
+  }
+
+  .main__image {
+    height: 16rem;
+  }
+}

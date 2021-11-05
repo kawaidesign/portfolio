@@ -1,0 +1,65 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title KAWAI DESIGN
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='icon' href='image/favicon.svg' type='image/svg+xml')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap' rel='stylesheet')
+    link(href='https://use.fontawesome.com/releases/v5.6.1/css/all.css' rel='stylesheet')
+  body
+    section.modal-profile
+      div(class='modal-profile__mask js-modal-close')
+      div(class='modal-profile__window')
+        img(class='modal-profile__icon mb-s' src='image/icon.svg' alt='icon')
+        h2(class='modal-profile__title mb-m') KAWAI DESIGN
+        p(class='modal-profile__sentence mb-s') グラフィックデザイン ／ Webデザイン・コーディングを行っています。
+          br
+          | デザインの力でビジネスの課題を発見・解決し、より多くの人に分かりやすく伝わるデザインをご提案します。
+        p(class='modal-profile__sentence mb-s') ロゴマーク、チラシ、名刺、パンフレットの紙媒体や、Webデザイン〜コーディングを行います。
+        p(class='modal-profile__sentence') 【使用ソフト・スキル】
+          br
+          | Adobe Illustrator / Adobe Photoshop / Adobe Indesign / Adobe XD / HTML&CSS / JavaScript / Git&GitHub
+    section.modal-mail
+      div(class='modal-mail__mask js-mail-close')
+      div(class='modal-mail__window')
+        p(class='modal-mail__sentence') メールフォームは実装中です。お問い合わせはインスタグラムかツイッターのDMからお願いします。
+    .container
+      header.header
+        div(class='header__wrapper')
+          p(class='header__logo')
+            a(href='index.html')
+              img(src='image/logo.svg' alt='ロゴマーク')
+      section.work-page
+        h2(class='work-page__title mb-s') hanacafe
+        h3(class='work-page__sub mb-l') Webサイト デザイン&コーディング
+        p(class='work-page__caption mb-s') お店の柔らかく、かわいらしい印象を取り入れつつ、おやつの写真を際立たせる構成にしました。ブランドカラーを随所に使用し、他のツールとの統一感を出しています。
+        p(class='work-page__link mb-l')
+          a(href='http://hanacafe1701.html.xdomain.jp/') Webサイトへ
+        div(class='work-page__scroll mb-l')
+          span Scroll
+        div(class='work-page__contents animationTargetWork')
+          img(class='work-page__contents-item' src='image/work_hanacafe_web.jpg' alt='hanacafe Webサイト')
+      nav.nav
+        section(class='nav__wrapper')
+          ul(class='nav__ul')
+            li(class='nav__list js-modal-open')
+              a(href='#')
+                i.far.fa-user-circle.fa-lg
+            li(class='nav__list')
+              a(href='https://www.instagram.com/kawai_design_ig/')
+                i.fab.fa-instagram.fa-lg
+            li(class='nav__list')
+              a(href='https://twitter.com/kawai_design')
+                i.fab.fa-twitter.fa-lg
+            li(class='nav__list js-mail-open')
+              a(href='#')
+                i.far.fa-envelope.fa-lg
+      footer.footer
+        p(class='footer__copy') ©︎KAWAI DESIGN
+    script(type='text/javascript' src='js/script.js')
